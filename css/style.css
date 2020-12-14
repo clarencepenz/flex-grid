@@ -9,6 +9,14 @@ html, body {
 
 }
 
+h3 { 
+  color: #000;
+  padding-top: 90px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
 .container {
   width: 80%;
   margin: auto;
@@ -76,9 +84,16 @@ input:focus {
   flex: 1 1 250px;
   margin: 5px;
   border-radius: 10px;
-  min-height: 300px;
-  /* min-width: 200px; */
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.images > div:nth-child(even){
+  min-height: 430px;
+}
+
+.images > div:nth-child(odd){
+  min-height: 400px;
 }

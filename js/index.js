@@ -1,7 +1,11 @@
 
+var loading = false;
+const image = document.querySelector(".images");
+const load = document.createElement('h3'); 
+
+image.appendChild(load);
 
 const allPhotos = ()=> {
-
   fetch('https://api.unsplash.com/photos/?client_id=BE9VXG11Z0oqBQPB191oY35h6t8F4dA14G8hE0l3Bxg', {
     method: "GET",
     headers: {
@@ -11,11 +15,10 @@ const allPhotos = ()=> {
   .then(res => {
     const photos = res
     appendToDOM(photos);
+    loading = true;
   })
   .catch(error => console.log(error))
 }
-
-allPhotos()
 
 const images = (user) => {
   const div = document.createElement("div");
@@ -46,8 +49,21 @@ const images = (user) => {
 };
 
 const appendToDOM = (photos) => {
-  const image = document.querySelector(".images");
-  photos.map(photo => {
-      image.appendChild(images(photo));
-  });
+  setTimeout(() => {
+    if(loading) {
+      const image = document.querySelector(".images");
+      photos.map(photo => {
+          image.appendChild(images(photo));
+      });
+      load.textContent = ''
+     }
+    }, 2500)
 };
+
+
+  if( !loading ){
+    load.textContent = 'loading...'
+  } 
+
+allPhotos()
+
